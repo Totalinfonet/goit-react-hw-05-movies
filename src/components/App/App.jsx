@@ -2,6 +2,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 
 import Home from '../../pages/Home';
 import Movies from '../../pages/Movies';
+import MovieDetails from '../MovieDetails/MovieDetails';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
       </Routes>
     </div>
   );

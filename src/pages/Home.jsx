@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState, useMemo } from 'react';
-import getTrendingMovies from '../service/apiService';
+import apiService from '../service/apiService';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTrendingMovies = async () => {
       try {
-        const data = await getTrendingMovies();
+        const data = await apiService.getTrendingMovies();
         setMovies(data);
       } catch (error) {
         console.error(error);
