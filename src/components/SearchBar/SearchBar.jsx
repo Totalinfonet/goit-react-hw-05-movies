@@ -5,6 +5,10 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (keyword === '') {
+      alert('Please enter a search query');
+      return;
+    }
     onSearch(keyword);
   };
 
