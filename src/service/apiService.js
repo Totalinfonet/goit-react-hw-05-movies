@@ -68,11 +68,29 @@ async function getMovieCast(movieId) {
   }
 }
 
+async function getMovieReviews(movieId) {
+  try {
+    const response = await axios.get(
+      `${MOVIE_INFO_API_URL}${movieId}/reviews`,
+      {
+        params: {
+          api_key: API_KEY,
+        },
+      }
+    );
+    return response.data.results;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error getting movie reviews');
+  }
+}
+
 const apiService = {
   getTrendingMovies,
   getMovieInfo,
   searchMovies,
   getMovieCast,
+  getMovieReviews,
 };
 
 export default apiService;

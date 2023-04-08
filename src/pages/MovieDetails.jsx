@@ -1,11 +1,12 @@
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import apiService from '../service/apiService';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieInfo, setMovieInfo] = useState(null);
   const location = useLocation();
+  const backLinkHref = useRef('');
 
   useEffect(() => {
     const fetchMovieInfo = async () => {
@@ -18,13 +19,15 @@ const MovieDetails = () => {
     };
 
     fetchMovieInfo();
-  }, [movieId]);
 
-  const backLinkHref = location.state?.from || '/';
+    if (location.state?.from) {
+      backLinkHref.current = location.state.from;
+    }
+  }, [movieId, location.state]);
 
   return (
     <div>
-      <Link to={backLinkHref}>Назад</Link>
+      <Link to={backLinkHref.current}>Назад</Link>
       {movieInfo ? (
         <div>
           <h1>{movieInfo.title}</h1>
