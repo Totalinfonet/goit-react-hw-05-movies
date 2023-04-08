@@ -1,6 +1,6 @@
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import apiService from '../../service/apiService';
+import apiService from '../service/apiService';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -31,6 +31,11 @@ const MovieDetails = () => {
           <p>{movieInfo.overview}</p>
           <p>Release date: {movieInfo.release_date}</p>
           <p>Popularity: {movieInfo.popularity}</p>
+          <nav>
+            <Link to="cast">Акторський склад</Link>
+            <Link to="reviews">Огляди</Link>
+          </nav>
+          <Outlet />
         </div>
       ) : (
         <p>Loading...</p>

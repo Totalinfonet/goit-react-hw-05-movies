@@ -51,10 +51,28 @@ async function searchMovies(keyword) {
   }
 }
 
+async function getMovieCredits(movieId) {
+  try {
+    const response = await axios.get(
+      `${MOVIE_INFO_API_URL}${movieId}/credits`,
+      {
+        params: {
+          api_key: API_KEY,
+        },
+      }
+    );
+    return response.data.cast;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error getting movie credits');
+  }
+}
+
 const apiService = {
   getTrendingMovies,
   getMovieInfo,
   searchMovies,
+  getMovieCredits,
 };
 
 export default apiService;
