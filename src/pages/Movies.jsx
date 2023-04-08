@@ -34,6 +34,7 @@ const Movies = () => {
     setSubmitted(true);
     apiService.searchMovies(query).then(setSearchResults);
   }
+  console.log(searchParams);
 
   return (
     <div>
