@@ -9,9 +9,8 @@ const Cast = () => {
   useEffect(() => {
     const fetchMovieCredits = async () => {
       try {
-        const credits = await apiService.getMovieCredits(movieId);
-        console.log('credits:', credits);
-        setCast(credits.cast);
+        const credits = await apiService.getMovieCast(movieId);
+        setCast(credits);
       } catch (error) {
         console.error(error);
       }
@@ -23,7 +22,7 @@ const Cast = () => {
   return (
     <div>
       <h2>Cast</h2>
-      {cast && cast.length > 0 ? (
+      {cast?.length ? (
         <ul>
           {cast.map(actor => (
             <li key={actor.id}>

@@ -51,7 +51,7 @@ async function searchMovies(keyword) {
   }
 }
 
-async function getMovieCredits(movieId) {
+async function getMovieCast(movieId) {
   try {
     const response = await axios.get(
       `${MOVIE_INFO_API_URL}${movieId}/credits`,
@@ -72,7 +72,7 @@ const apiService = {
   getTrendingMovies,
   getMovieInfo,
   searchMovies,
-  getMovieCredits,
+  getMovieCast,
 };
 
 export default apiService;
