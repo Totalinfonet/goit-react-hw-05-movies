@@ -20,7 +20,7 @@ const MovieDetails = () => {
     fetchMovieInfo();
   }, [movieId]);
 
-  const backLinkHref = location.state?.from || '/movies';
+  const backLinkHref = location.state?.from || '/';
 
   return (
     <div>
