@@ -1,5 +1,5 @@
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import apiService from '../service/apiService';
 
 const MovieDetails = () => {
@@ -34,7 +34,9 @@ const MovieDetails = () => {
             <Link to="cast">Акторський склад</Link>
             <Link to="reviews">Огляди</Link>
           </nav>
-          <Outlet />
+          <Suspense fallback={<div>Loading page...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       ) : (
         <p>Loading...</p>
