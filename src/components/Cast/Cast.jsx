@@ -20,8 +20,6 @@ const Cast = () => {
     fetchMovieCredits();
   }, [movieId]);
 
-  console.log(cast);
-
   const tmdbImageUrl = (path, size) => {
     const baseUrl = 'https://image.tmdb.org/t/p/';
     return `${baseUrl}${size}${path}`;
