@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from './SearchBar.styled';
+import PropTypes from 'prop-types';
 
 const SearchBar = ({ onSearch }) => {
   const [keyword, setKeyword] = useState('');
@@ -23,6 +24,10 @@ const SearchBar = ({ onSearch }) => {
       <Button type="submit">Search</Button>
     </Form>
   );
+};
+
+SearchBar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
