@@ -20,7 +20,9 @@ const Cast = () => {
     fetchMovieCredits();
   }, [movieId]);
 
-  const tmdbImageUrl = (path, size = 'w500') => {
+  console.log(cast);
+
+  const tmdbImageUrl = (path, size) => {
     const baseUrl = 'https://image.tmdb.org/t/p/';
     return `${baseUrl}${size}${path}`;
   };
@@ -33,7 +35,7 @@ const Cast = () => {
           {cast.map(actor => (
             <li key={actor.id}>
               <ActorImage
-                src={tmdbImageUrl(actor.profile_path, 'w300')}
+                src={tmdbImageUrl(actor.profile_path, 'w200')}
                 alt={actor.name}
               />
               <ActorInfo>
