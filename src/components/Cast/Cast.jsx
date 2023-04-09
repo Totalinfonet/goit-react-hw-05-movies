@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import apiService from '../../service/apiService';
 import { useParams } from 'react-router-dom';
+import { CastWrapper, ActorImage, ActorInfo } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -25,25 +26,27 @@ const Cast = () => {
   };
 
   return (
-    <div>
+    <CastWrapper>
       <h2>Cast</h2>
       {cast?.length ? (
         <ul>
           {cast.map(actor => (
             <li key={actor.id}>
-              <img
+              <ActorImage
                 src={tmdbImageUrl(actor.profile_path, 'w300')}
                 alt={actor.name}
               />
-              <p>{actor.name}</p>
-              <p>{actor.character}</p>
+              <ActorInfo>
+                <p>{actor.name}</p>
+                <p>{actor.character}</p>
+              </ActorInfo>
             </li>
           ))}
         </ul>
       ) : (
         <p>Loading cast...</p>
       )}
-    </div>
+    </CastWrapper>
   );
 };
 
