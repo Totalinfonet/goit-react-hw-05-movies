@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import apiService from '../../service/apiService';
 import { useParams } from 'react-router-dom';
+import { ReviewList, ReviewListItem } from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -23,14 +24,14 @@ const Reviews = () => {
     <div>
       <h2>Reviews</h2>
       {reviews?.length ? (
-        <ul>
+        <ReviewList>
           {reviews.map(review => (
-            <li key={review.id}>
+            <ReviewListItem key={review.id}>
               <p>{`Author: ${review.author}`}</p>
               <p>{review.content}</p>
-            </li>
+            </ReviewListItem>
           ))}
-        </ul>
+        </ReviewList>
       ) : (
         <p>
           Sorry, there are no reviews available for this movie at this time.

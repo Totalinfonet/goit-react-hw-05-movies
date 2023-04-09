@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBar/SearchBar';
 import apiService from '../../src/service/apiService';
+import styled from '@emotion/styled';
 
 const Movies = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -37,7 +38,7 @@ const Movies = () => {
   console.log(searchParams);
 
   return (
-    <div>
+    <MovieWrapper>
       <SearchBar onSearch={handleSearch} initialValue={query} />
       {submitted && movies.length === 0 && (
         <p>No results found for "{searchTerm}"</p>
@@ -53,8 +54,36 @@ const Movies = () => {
           ))}
         </ul>
       )}
-    </div>
+    </MovieWrapper>
   );
 };
 
 export default Movies;
+
+const MovieWrapper = styled.div`
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: disclosure-closed;
+    margin-left: 48px;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: blue;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+`;

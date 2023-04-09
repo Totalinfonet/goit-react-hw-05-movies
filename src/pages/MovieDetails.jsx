@@ -104,12 +104,12 @@ const MovieInfo = styled.div`
 
 const Title = styled.h1`
   font-size: 2rem;
-  margin: 1rem 0;
+  margin: 0;
 `;
 
 const Overview = styled.p`
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin: 0;
 `;
 
 const ReleaseDate = styled.p`
